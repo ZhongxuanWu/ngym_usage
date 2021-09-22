@@ -21,7 +21,8 @@ tasks = ngym.get_collection('yang19')
 envs = [gym.make(task, **kwargs) for task in tasks]
 env = MultiEnvs(envs, env_input=True)
 
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
+# device = 'cuda' if torch.cuda.is_available() else 'cpu'
+device = 'cpu'
 net = RNNNet(input_size=53, hidden_size=256, output_size=17,
              dt=env.dt).to(device)
 fname = os.path.join('files', 'model.pt')
